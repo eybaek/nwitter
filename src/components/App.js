@@ -1,17 +1,7 @@
-import React, { useState } from "react";
-import AppRouter from "components/Router";
-import { authService } from "fbase";
-
+import React from "react"
+import AppRouter from "./Router"
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
-
-  return (
-    <>
-      <AppRouter isLoggedIn={isLoggedIn}/>
-      <footer>&copy; Nwitter {new Date().getFullYear()}</footer>
-    </>
-  );
+  return <AppRouter />
 }
-
 export default App;
