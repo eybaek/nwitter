@@ -1,4 +1,12 @@
+import { authService } from "fbase";
 import React, { Profiler } from "react";
+import { useHistory } from "react-router";
 
-const Profile = () => <span>Profile</span>
-export default Profiler;
+export default () => {
+  const onLogOutClick = () => {
+    const history = useHistory();
+    authService.signOut();
+    history.push('/');
+  }
+  return <><button onClick={onLogOutClick}>Log Out</button></>;
+};
