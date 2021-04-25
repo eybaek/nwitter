@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from "fbase";
+import Nweet from "components/Nweets";
 
 const Home = ({ userObj }) => {
 const [nweet, setNweet] = useState("");
 const [nweets, setNweets] = useState([]);
-  
-  const getNweets = async() => {
-    const dbNweets = await dbService.collection("nweets").get()
-    dbNweets.forEach((document) => {
-      const nweetObj = {
-        ...document.data(),
-        id: document.id,
-      }
-      setNweets((prev) => [nweetObj, ...prev]);
-    })
-  };
+
   useEffect(() => {
-    getNweets();
-  }, [])
+    dbService.collection("nweets").onSnapshot((snapshot) => {
+      const nweetArray = snapshot.docs.map(doc =>({
+        id : doc.id,
+        ...doc.data(),
+      }));
+      setNweets(nweetArray)
+    });
+  }, []);
 
   const onSubmit = async(event) =>{
     event.preventDefault();
@@ -34,7 +31,6 @@ const [nweets, setNweets] = useState([]);
     } = event;
     setNweet(value);
   } 
-  // console.log(nweets);
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -49,9 +45,10 @@ const [nweets, setNweets] = useState([]);
       </form>
       <div>
         {nweets.map((nweet) => (
-          <div key={nweet.id}>
-            <h4>{nweet.nweet}</h4>
-          </div>
+          <Nweet 
+            key={nweet.id} 
+            nweetObj={nweet} 
+            isOwner={nweet.creatorId === userObj.uid}/>
         ))}
       </div>
     </div>
