@@ -9,9 +9,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     const ok = window.confirm("Are you sure you want to delete nweet?");
     if (ok) {
       await dbService.doc(`nweets/${nweetObj.id}`).delete();
-    } else {
-
-    }
+    } 
   }
   const toggleEditing = () => {
     setEditing((prev) => !prev);
@@ -32,21 +30,20 @@ const Nweet = ({ nweetObj, isOwner }) => {
 
   return (
     <div>
-      {
-        editing ? 
-          <>
-            <form onSubmit={onSubmit}>
-              <input 
-                type="text" 
-                placeholder="Edit your nweet" 
-                value={newNweet} 
-                onChange={onChange}
-                required/>
-              <input type="submit" value="Update Nweet" />
-            </form>
-            <button onClick={toggleEditing}>Cancel</button>
-          </>
-        :
+      {editing ? (
+        <>
+          <form onSubmit={onSubmit}>
+            <input 
+              type="text" 
+              placeholder="Edit your nweet" 
+              value={newNweet} 
+              onChange={onChange}
+              required/>
+            <input type="submit" value="Update Nweet" />
+          </form>
+          <button onClick={toggleEditing}>Cancel</button>
+        </>
+      ) : (
           <>
             <h4>{nweetObj.text}</h4>
             {isOwner && (
@@ -56,7 +53,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
               </>
             )}
           </>
-      }
+      )}
     </div>
   )
 }
