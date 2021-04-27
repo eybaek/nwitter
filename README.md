@@ -1,3 +1,7 @@
+# You must create a .env file
+Firebase 와 연동되는 Application으로 firebase service 에서 사용되어지는 parameter 들은 
+.env 파일을 생성하여 별도로 추가해줘야 합니다.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
