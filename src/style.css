@@ -274,3 +274,8 @@ form {
   font-size: 12px;
   text-decoration: underline;
 }
+
+.svg-inline--fa {
+  margin-left: 3px;
+
+}

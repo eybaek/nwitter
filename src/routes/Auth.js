@@ -33,6 +33,10 @@ const Auth = () => {
           Continue with Google
           <FontAwesomeIcon icon={faGoogle} />
         </button>
+        <button onClick={onSocialClick}  name="github" className="authBtn" >
+          Continue with GitHub
+          <FontAwesomeIcon icon={faGithub} />
+        </button>
         {/* <button>Continue with GitHub</button> */}
       </div>
     </div>
