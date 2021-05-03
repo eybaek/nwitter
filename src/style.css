@@ -45,7 +45,7 @@ form {
 }
 
 .formInput {
-  width: 100%;
+  width: 80%;
   padding: 10px 20px;
   border-radius: 20px;
   border: 1px solid black;
@@ -105,7 +105,7 @@ form {
 
 .factoryInput__input {
   flex-grow: 1;
-  height: 40px;
+  height: 20px;
   padding: 0px 20px;
   color: white;
   border: 1px solid #04aaff;
